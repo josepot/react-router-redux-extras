@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import warning from 'warning'
+import {matchPath} from 'react-router'
 import connectedRoute from './connectedRoute'
 
 export default class Route extends React.PureComponent {
@@ -13,7 +14,8 @@ export default class Route extends React.PureComponent {
     component: PropTypes.func,
     render: PropTypes.func,
     children: PropTypes.oneOfType([PropTypes.func, PropTypes.node]),
-  };
+    location: PropTypes.object,
+  }
 
   render() {
     const {
@@ -24,8 +26,14 @@ export default class Route extends React.PureComponent {
       component,
       render,
       children,
-      computedMatch: match,
+      computedMatch,
+      location,
     } = this.props
+
+    const match =
+      computedMatch ||
+      (location &&
+        matchPath(location.pathname, {path, exact, strict, sensitive}))
 
     const isChildrenFn = typeof children === 'function'
     const hasSingleChild = children && React.Children.count(children) === 1

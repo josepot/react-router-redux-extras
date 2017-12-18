@@ -7,7 +7,7 @@ class Switch extends React.Component {
   static propTypes = {
     children: PropTypes.node,
     location: PropTypes.object.isRequired,
-  };
+  }
 
   constructor(props) {
     super(props)
@@ -24,10 +24,17 @@ class Switch extends React.Component {
     React.Children.forEach(this.props.children, element => {
       if (!React.isValidElement(element)) return
 
-      const {from, path: pathProp, exact, strict, sensitive} = element.props
+      const {
+        from,
+        path: pathProp,
+        exact,
+        routerMatch,
+        strict,
+        sensitive,
+      } = element.props
       const path = pathProp || from
 
-      if (match === null) {
+      if (match === null && React.isValidElement(element)) {
         child = element
         match = path
           ? matchPath(location.pathname, {
@@ -36,7 +43,7 @@ class Switch extends React.Component {
               strict,
               sensitive,
             })
-          : null
+          : routerMatch
         if (match) matchedPath = path
       }
     })

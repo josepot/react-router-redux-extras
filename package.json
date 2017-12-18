@@ -1,6 +1,6 @@
 {
   "name": "react-router-redux-extras",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Performant Components for react-router-redux",
   "repository": "jospot/react-router-redux-extras",
   "license": "MIT",
@@ -52,8 +52,10 @@
     "jest": "^21.2.1",
     "pretty-bytes": "^4.0.2",
     "react": "^16.0.0",
+    "react-dom": "^16.2.0",
     "react-redux": "^5.0.6",
     "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
     "react-router-redux": "5.0.0-alpha.9",
     "react-test-renderer": "^16.1.0",
     "redux": "^3.6.0",
