@@ -1,6 +1,6 @@
 {
   "name": "react-router-redux-extras",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "description": "Performant Components for react-router-redux",
   "repository": "jospot/react-router-redux-extras",
   "license": "MIT",

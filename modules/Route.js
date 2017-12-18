@@ -52,6 +52,7 @@ export default class Route extends React.PureComponent {
     if (match !== undefined) {
       if (isChildrenFn) return children({match})
       if (match === null) return null
+
       return component
         ? React.createElement(component, {match})
         : render({match})

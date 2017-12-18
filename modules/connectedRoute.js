@@ -6,9 +6,7 @@ const renderNothingIfNoMatch = Component => props =>
   !props.match ? null : <Component {...props} />
 
 export default (path, alwaysRender = false) => {
-  const matcher = connect(
-    state => ({match: createMatchSelector(path)(state)}),
-    {}
-  )
+  const selector = createMatchSelector(path)
+  const matcher = connect(state => ({match: selector(state)}), {})
   return alwaysRender ? matcher : C => matcher(renderNothingIfNoMatch(C))
 }
